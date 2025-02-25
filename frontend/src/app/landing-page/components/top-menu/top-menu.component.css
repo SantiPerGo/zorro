@@ -29,11 +29,11 @@
 .advertisement {
     width: auto;
     height: 100%;
+    max-width: 100%;
     object-fit: contain;
 }
 
 .advertisement {
-    width: 100%;
     border-radius: 1rem;
 }
 
