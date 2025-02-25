@@ -1,0 +1,25 @@
+ul {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+    
+    list-style-type: none;
+    margin: 0;
+    padding: 1rem 0;
+    overflow: hidden;
+
+    background-color: var(--mat-sys-tertiary);
+    font-weight: bold;
+    user-select: none;
+    cursor: pointer;
+}
+
+a {
+    text-decoration: none;
+    color: var(--mat-sys-surface);
+}
+
+.selected {
+    color: gold;
+}
