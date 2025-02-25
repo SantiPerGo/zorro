@@ -11,11 +11,10 @@ module.exports = {
   attributes: {
     statusId: {
       type: 'number',
-      autoIncrement: true, // Automatically increment the value
-      columnType: 'int', // Specify the column type
-      required: true,
+      autoIncrement: true,
+      columnType: 'int',
       unique: true,
-      columnName: 'status_id' // Match the column name in the database
+      columnName: 'status_id'
     },
 
     statusName: {

@@ -11,11 +11,10 @@ module.exports = {
   attributes: {
     userId: {
       type: 'number',
-      autoIncrement: true, // Automatically increment the value
-      columnType: 'int', // Specify the column type
-      required: true,
+      autoIncrement: true,
+      columnType: 'int',
       unique: true,
-      columnName: 'user_id' // Match the column name in the database
+      columnName: 'user_id'
     },
     username: {
       type: 'string',
@@ -34,12 +33,15 @@ module.exports = {
     }
   },
 
-  toJson: () => _.omit(this, ['password']),
+  customToJSON: function() {
+    return _.omit(this, ['password']);
+  },
 
   // Hash password before creating a User
   beforeCreate: async (values, proceed) => {
-    const hashedPassword = await sails.helpers.passwords.hashPassword(values.password);
-    values.password = hashedPassword;
+    if (values.password) {
+      values.password = await sails.helpers.passwords.hashPassword(values.password);
+    }
     return proceed();
   },
 };

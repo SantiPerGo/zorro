@@ -11,11 +11,10 @@ module.exports = {
   attributes: {
     productId: {
       type: 'number',
-      autoIncrement: true, // Automatically increment the value
-      columnType: 'int', // Specify the column type
-      required: true,
+      autoIncrement: true,
+      columnType: 'int',
       unique: true,
-      columnName: 'product_id' // Match the column name in the database
+      columnName: 'product_id'
     },
 
     productName: {
