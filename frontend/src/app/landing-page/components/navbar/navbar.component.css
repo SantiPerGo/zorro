@@ -23,3 +23,15 @@ a {
 .selected {
     color: gold;
 }
+
+@media (max-width: 768px) {
+    nav {
+        display: none;
+    }
+}
+
+@media (max-width: 1200px) {
+    ul {
+        gap: 1rem;
+    }
+}
