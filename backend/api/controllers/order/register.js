@@ -49,23 +49,23 @@ module.exports = {
     await sails.getDatastore().transaction(async (db)=> {
       try {
         // Check if the user exists
-        const user = await User.findOne({ user_id: inputs.userId }).usingConnection(db);
+        const user = await User.findOne({ id: inputs.userId }).usingConnection(db);
         if (!user) {
           return exits.notFound({ error: 'User not found' });
         }
 
         // Get pending status
-        const status = await OrderStatus.findOne({ status_name: 'PENDING' }).usingConnection(db);
+        const status = await OrderStatus.findOne({ statusName: 'PENDING' }).usingConnection(db);
 
         // Create the order
         const newOrder = await Order.create({
-          user_id: inputs.userId,
-          status_id: status.status_id
+          userId: inputs.userId,
+          statusId: status.id
         }).usingConnection(db).fetch();
 
         // Insert products into order_details
         for (const item of inputs.products) {
-          const product = await Product.findOne({ product_id: item.productId }).usingConnection(db);
+          const product = await Product.findOne({ id: item.productId }).usingConnection(db);
 
           if (!product) {
             return exits.notFound({ error: `Product not found: ${item.productId}` });
@@ -76,8 +76,8 @@ module.exports = {
           }
 
           await OrderDetails.create({
-            order_id: newOrder.id,
-            product_id: item.productId,
+            orderId: newOrder.id,
+            productId: item.productId,
             quantity: item.quantity
           }).usingConnection(db);
         }

@@ -7,19 +7,12 @@
 
 module.exports = {
   tableName: 'products',
-  primaryKey: 'product_id',
   attributes: {
-    product_id: {
-      type: 'number',
-      autoIncrement: true,
-      columnType: 'int',
-      unique: true
-    },
-
-    product_name: {
+    productName: {
       type: 'string',
       required: true,
-      unique: true
+      unique: true,
+      columnName: 'product_name'
     },
 
     price: {
@@ -39,7 +32,7 @@ module.exports = {
     // Relationship with OrderDetails (Many-to-Many via OrderDetails)
     orderDetails: {
       collection: 'OrderDetails',
-      via: 'product_id'
+      via: 'productId'
     }
   },
 

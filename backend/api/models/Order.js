@@ -7,23 +7,17 @@
 
 module.exports = {
   tableName: 'orders',
-  primaryKey: 'order_id',
   attributes: {
-    order_id: {
-      type: 'number',
-      autoIncrement: true,
-      columnType: 'int',
-      unique: true
-    },
-
-    user_id: {
+    userId: {
       model: 'User',
-      required: true
+      required: true,
+      columnName: 'user_id'
     },
 
-    status_id: {
+    statusId: {
       model: 'OrderStatus',
-      required: true
+      required: true,
+      columnName: 'status_id'
     },
 
     orderDate: {
@@ -36,7 +30,7 @@ module.exports = {
     // Relationship with OrderDetails (One-to-Many)
     orderDetails: {
       collection: 'OrderDetails',
-      via: 'order_id'
+      via: 'orderId'
     }
   },
 

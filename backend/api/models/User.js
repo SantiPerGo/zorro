@@ -7,14 +7,7 @@
 
 module.exports = {
   tableName: 'users',
-  primaryKey: 'user_id',
   attributes: {
-    user_id: {
-      type: 'number',
-      autoIncrement: true,
-      columnType: 'int',
-      unique: true
-    },
     username: {
       type: 'string',
       required: true
@@ -43,5 +36,11 @@ module.exports = {
     }
     return proceed();
   },
+
+  // Relationship with Orders (One-to-Many)
+  orders: {
+    collection: 'Order',
+    via: 'userId'
+  }
 };
 
