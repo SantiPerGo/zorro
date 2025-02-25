@@ -1,5 +1,5 @@
 /**
- * UsersController
+ * OrdersController
  *
  * @description :: Server-side actions for handling incoming requests.
  */
