@@ -6,7 +6,7 @@
     align-content: center;
     padding: 1rem 0;
 
-    background-color: var(--mat-sys-on-surface);
+    background-color: var(--mat-sys-on-tertiary-fixed);
     color: var(--mat-sys-surface);
     font-weight: 100;
 }
