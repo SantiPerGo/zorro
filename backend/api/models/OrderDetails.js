@@ -7,26 +7,23 @@
 
 module.exports = {
   tableName: 'order_details',
-  primaryKey: 'detailsId',
+  primaryKey: 'details_id',
   attributes: {
-    detailsId: {
+    details_id: {
       type: 'number',
       autoIncrement: true,
       columnType: 'int',
-      unique: true,
-      columnName: 'details_id'
+      unique: true
     },
 
-    orderId: {
+    order_id: {
       model: 'Order',
-      required: true,
-      columnName: 'order_id'
+      required: true
     },
 
-    productId: {
+    product_id: {
       model: 'Product',
-      required: true,
-      columnName: 'product_id'
+      required: true
     },
 
     quantity: {

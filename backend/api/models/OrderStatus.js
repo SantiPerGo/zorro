@@ -7,27 +7,25 @@
 
 module.exports = {
   tableName: 'order_status',
-  primaryKey: 'statusId',
+  primaryKey: 'status_id',
   attributes: {
-    statusId: {
+    status_id: {
       type: 'number',
       autoIncrement: true,
       columnType: 'int',
-      unique: true,
-      columnName: 'status_id'
+      unique: true
     },
 
-    statusName: {
+    status_name: {
       type: 'string',
       required: true,
-      unique: true,
-      columnName: 'status_name'
+      unique: true
     },
 
     // Relationship with Orders (One-to-Many)
     orders: {
       collection: 'Order',
-      via: 'statusId'
+      via: 'status_id'
     }
   },
 

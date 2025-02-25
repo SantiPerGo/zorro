@@ -11,4 +11,5 @@
 module.exports.routes = {
   'GET /api/products': 'ProductsController.list',
   'POST /api/register': 'user/register',
+  'POST /api/orders': 'order/register'
 };

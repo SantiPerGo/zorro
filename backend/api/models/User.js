@@ -7,14 +7,13 @@
 
 module.exports = {
   tableName: 'users',
-  primaryKey: 'userId',
+  primaryKey: 'user_id',
   attributes: {
-    userId: {
+    user_id: {
       type: 'number',
       autoIncrement: true,
       columnType: 'int',
-      unique: true,
-      columnName: 'user_id'
+      unique: true
     },
     username: {
       type: 'string',
