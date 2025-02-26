@@ -15,3 +15,18 @@ html, body {
 }
 
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+/* General snackbar styles */
+
+.mat-mdc-snack-bar-container {
+    margin-bottom: 2rem !important;
+}
+
+.snackbar-error .mat-mdc-snackbar-surface {
+    background-color: var(--mat-sys-tertiary) !important;
+    color: var(--mat-sys-on-tertiary) !important;
+}
+
+.mat-mdc-snack-bar-container .mdc-snackbar__label {
+    font-size: var(--mat-sys-body-large-size) !important;    
+}

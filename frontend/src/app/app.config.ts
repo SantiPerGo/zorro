@@ -1,10 +1,29 @@
-import { ApplicationConfig, provideZoneChangeDetection } from '@angular/core';
+import { ApplicationConfig, importProvidersFrom, provideZoneChangeDetection } from '@angular/core';
 import { provideRouter } from '@angular/router';
 
 import { routes } from './app.routes';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
-import { provideHttpClient } from '@angular/common/http';
+import { provideHttpClient, withInterceptors } from '@angular/common/http';
+import { jwtInterceptor } from './interceptors/jwt-interceptor.interceptor';
+import { JwtModule } from '@auth0/angular-jwt';
+import { AuthService } from './services/auth.service';
 
 export const appConfig: ApplicationConfig = {
-  providers: [provideZoneChangeDetection({ eventCoalescing: true }), provideRouter(routes), provideAnimationsAsync(), provideHttpClient()]
+  providers: [
+    provideZoneChangeDetection({ eventCoalescing: true }),
+    provideRouter(routes),
+    provideAnimationsAsync(),
+    provideHttpClient(
+      withInterceptors([jwtInterceptor])
+    ),
+    importProvidersFrom(
+        JwtModule.forRoot({
+            config: {
+                tokenGetter: AuthService.getToken,
+                allowedDomains: ["example.com"],
+                disallowedRoutes: ["http://example.com/examplebadroute/"],
+            },
+        }),
+    ),
+  ]
 };

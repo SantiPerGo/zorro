@@ -1,0 +1,45 @@
+<div class="bg">
+    <div class="left-container">
+        <div class="logo-container">
+            <img src="login logo.gif" alt="logo" class="logo">
+        </div>
+        
+        <div class="form-container">
+            <form [formGroup]="form" (ngSubmit)="submitForm()">
+                <h1>Portal de Proveedores y Socios Comerciales</h1>
+                <h3>Escribe tu correo y contraseña:</h3>
+        
+                <mat-form-field>
+                    <mat-label>Correo electrónico</mat-label>
+        
+                    <input matInput placeholder="zorro@example.com"
+                      formControlName="email" required />
+        
+                    @if (form.controls.email.touched && form.controls.email.invalid) {
+                      <mat-error>{{ emailErrorMessage() }}</mat-error>
+                    }
+                </mat-form-field>
+        
+                <mat-form-field>
+                    <mat-label>Contraseña</mat-label>
+        
+                    <input matInput [type]="hide() ? 'password' : 'text'" 
+                        formControlName="password" required />
+        
+                    <button mat-icon-button matSuffix (click)="clickEvent($event)"
+                        [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide()">
+                        <mat-icon>{{hide() ? 'visibility_off' : 'visibility'}}</mat-icon>
+                    </button>
+        
+                    @if (form.controls.password.touched && form.controls.password.invalid) {
+                      <mat-error>{{ passwordErrorMessage() }}</mat-error>
+                    }
+                </mat-form-field>
+                
+                <button type="submit" mat-flat-button>Iniciar sesión</button>
+            </form>
+        </div>
+    </div>
+
+    <div class="right-container"></div>
+</div>

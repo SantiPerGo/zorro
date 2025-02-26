@@ -1,0 +1,75 @@
+.bg,
+.logo-container,
+.form-container,
+.left-container,
+.right-container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.bg {
+    height: 100%;
+    flex-direction: row-reverse;
+}
+
+.left-container,
+.right-container {
+    width: 50%;
+    height: 100%;
+}
+
+.right-container {    
+    background-image: url('/login bg.jpg');
+    background-size: cover;
+    background-position: left center;
+    background-repeat: no-repeat;
+}
+
+.left-container {
+    background-color: var(--mat-sys-surface);
+}
+
+.logo-container {
+    width: 100%;
+    height: 25%;
+}
+
+.logo-container img {
+    width: auto;
+    height: 100%;
+}
+
+:host ::ng-deep .mat-mdc-form-field {
+    display: block;
+    width: 100%;
+    margin-bottom: 1rem;
+}
+
+.mat-mdc-unelevated-button:not(:disabled) {
+    background-color: var(--mat-sys-tertiary);
+}
+
+.form-container { 
+    width: 75%;
+}
+
+h3 {
+    margin: 2rem 0;
+}
+
+@media screen and (max-width: 1200px) {
+    .right-container {
+        display: none;
+    }
+
+    .left-container {
+        width: 75%;
+    }
+
+    .form-container { 
+        width: 100%;
+    }
+}
