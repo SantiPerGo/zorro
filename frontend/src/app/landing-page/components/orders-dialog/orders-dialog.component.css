@@ -1,0 +1,17 @@
+.container {
+    padding: 5rem;
+}
+
+
+:host ::ng-deep .mat-icon {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    cursor: pointer;
+    
+    width: 2rem;
+    height: 2rem;
+    font-size: 2rem;
+
+    transform-origin: left top;
+}

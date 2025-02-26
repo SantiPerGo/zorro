@@ -61,7 +61,8 @@ export class LoginComponent {
 
     this.apiService.login(user).subscribe({
       next: (auth: Auth) => {
-        sessionStorage.setItem('access_token', JSON.stringify(auth.token));
+        sessionStorage.setItem('access_token', auth.token);
+        sessionStorage.setItem('user_id', JSON.stringify(auth.userId));
         this.router.navigate(['/home']);
       },
       error: response => {

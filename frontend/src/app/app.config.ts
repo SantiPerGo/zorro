@@ -19,9 +19,7 @@ export const appConfig: ApplicationConfig = {
     importProvidersFrom(
         JwtModule.forRoot({
             config: {
-                tokenGetter: AuthService.getToken,
-                allowedDomains: ["example.com"],
-                disallowedRoutes: ["http://example.com/examplebadroute/"],
+                tokenGetter: AuthService.getToken
             },
         }),
     ),

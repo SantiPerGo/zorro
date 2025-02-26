@@ -1,0 +1,11 @@
+<div class="container">
+    <mat-icon fontIcon="close" (click)="dialogRef.close()"></mat-icon>
+
+    @if (orders && orders.length > 0) {
+        <h2>Tus Pedidos</h2>
+    } @else {
+        <h2>No hay pedidos por mostrar</h2>
+        <br>
+        <p>Compra algunos productos y luego regresa aquí para ver el progreso de tus pedidos.</p>
+    }
+</div>

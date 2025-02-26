@@ -1,6 +1,8 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { RouterLink, RouterLinkActive } from '@angular/router';
 import { AuthService } from '../../../services/auth.service';
+import { MatDialog } from '@angular/material/dialog';
+import { OrdersDialogComponent } from '../orders-dialog/orders-dialog.component';
 
 @Component({
   selector: 'navbar',
@@ -9,9 +11,15 @@ import { AuthService } from '../../../services/auth.service';
   styleUrl: './navbar.component.css'
 })
 export class NavbarComponent {
+  readonly dialog = inject(MatDialog);
+
   constructor(private authService: AuthService) { }
 
   protected closeSession() {
     this.authService.closeSession();
+  }
+
+  protected openDialog() {
+    this.dialog.open(OrdersDialogComponent);
   }
 }

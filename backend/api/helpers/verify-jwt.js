@@ -37,22 +37,22 @@ module.exports = {
       var token = req.header('authorization').split('Bearer ')[1];
 
       // if there's nothing after "Bearer", no go
-      if (!token) { return exits.invalid(); }
+      if (!token) { return exits.invalid('There is no token'); }
 
       // if there is something, attempt to parse it as a JWT token
       return jwt.verify(token, sails.config.custom.jwtSecret, async (err, payload) => {
-        if (err || !payload.sub) { return exits.invalid(); }
+        if (err || !payload.sub) { return exits.invalid(err); }
 
         const user = await User.findOne(payload.sub);
 
-        if (!user) { return exits.invalid();}
+        if (!user) { return exits.invalid(err); }
 
         // if it got this far, everything checks out, success
         req.user = user;
         return exits.success(user);
       });
     }
-    return exits.invalid();
+    return exits.invalid('No authorization header');
   }
 };
 

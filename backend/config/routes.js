@@ -16,5 +16,6 @@ module.exports.routes = {
 
   // Protected routes
   'GET /api/orders/:id': 'order/find',
-  'POST /api/orders': 'order/register'
+  'POST /api/orders': 'order/register',
+  'GET /api/orders/list/:userId': 'order/list'
 };

@@ -20,6 +20,10 @@ export class AuthService {
   public static getToken(): string | null {
     return sessionStorage.getItem('access_token');
   }
+  
+  public static getUserId(): string | null {
+    return sessionStorage.getItem('user_id');
+  }
 
   public closeSession() {
     sessionStorage.removeItem('access_token');

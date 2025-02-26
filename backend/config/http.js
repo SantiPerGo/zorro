@@ -23,13 +23,11 @@ module.exports.http = {
   middleware: {
 
     customCors: function (req, res, next) {
-      res.setHeader('Access-Control-Allow-Origin', '*');
+      res.setHeader('Access-Control-Allow-Origin', 'http://localhost:4200');
+      res.header('Access-Control-Allow-Credentials', 'true');
       res.setHeader('Access-Control-Allow-Methods', 'GET,POST,PUT,DELETE,OPTIONS,HEAD');
-      res.setHeader('Access-Control-Allow-Headers', 'content-type, authorization');
-      if (req.method === 'OPTIONS') {
-        return res.sendStatus(200); // Handle preflight request
-      }
-      return next();
+      res.setHeader('Access-Control-Allow-Headers', 'content-type, Authorization');
+      return req.method === 'OPTIONS' ? res.sendStatus(200) : next();
     },
 
     /***************************************************************************
@@ -40,7 +38,6 @@ module.exports.http = {
     ***************************************************************************/
 
     order: [
-      'customCors',
       'cookieParser',
       'session',
       'bodyParser',
@@ -49,6 +46,7 @@ module.exports.http = {
       'router',
       'www',
       'favicon',
+      'customCors'
     ],
 
 

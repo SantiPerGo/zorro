@@ -54,7 +54,7 @@ module.exports = {
         { expiresIn: '7d' }
       );
 
-      return exits.success({ message: 'Login successful', token });
+      return exits.success({ message: 'Login successful', token, userId: user.id });
     } catch (error) {
       sails.log.error('Login error:', error);
       return exits.serverError({ error: 'An error occurred during login' });
