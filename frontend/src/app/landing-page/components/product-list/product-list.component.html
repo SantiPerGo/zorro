@@ -1,0 +1,18 @@
+<h2>Productos disponibles a domicilio</h2>
+
+<div class="container">
+    <mat-icon fontIcon="arrow_circle_left" (click)="scrollCarousel(-1)"></mat-icon>
+    <mat-icon fontIcon="arrow_circle_right" (click)="scrollCarousel(1)"></mat-icon>
+
+    <div class="carousel" #carousel>
+        @for (product of products; track $index) {
+            <div class="product-card">
+                <img class="product-image" src="http://localhost:1337/{{ product.productName }}.png" alt="{{ product.productName }}">
+                <h3>{{ product.productName }}</h3>
+                <p><b>Precio:</b> ${{ product.price }}</p>
+                <p><b>Disponibles:</b> {{ product.stock }}</p>
+                <button mat-stroked-button>Comprar</button>
+            </div>
+        }
+    </div>
+</div>

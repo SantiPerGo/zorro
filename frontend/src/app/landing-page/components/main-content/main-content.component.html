@@ -3,6 +3,10 @@
         <img class="banner" src="banner 1.png" alt="Tik tok banner">
     </div>
 
+    @if (products && products.length > 0) {
+        <product-list [products]="products"></product-list>
+    }
+
     <main>
         <h2>Promociones del 12 al 25 de Marzo 2025</h2>
 
