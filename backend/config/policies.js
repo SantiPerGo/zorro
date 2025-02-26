@@ -17,6 +17,8 @@ module.exports.policies = {
   *                                                                          *
   ***************************************************************************/
 
-  // '*': true,
-
+  '*': ['isAuthenticated'],
+  'product/list': true,
+  'user/register': true,
+  'user/login': true
 };

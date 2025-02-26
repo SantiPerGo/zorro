@@ -9,8 +9,12 @@
  */
 
 module.exports.routes = {
+  // Public routes
   'GET /api/products': 'product/list',
   'POST /api/register': 'user/register',
-  'POST /api/orders': 'order/register',
-  'GET /api/orders/:id': 'order/find'
+  'POST /api/login': 'user/login',
+
+  // Protected routes
+  'GET /api/orders/:id': 'order/find',
+  'POST /api/orders': 'order/register'
 };
