@@ -51,8 +51,11 @@ module.exports = {
         // Remove the product ID from the order
         delete order[i].id;
         delete order[i].productId;
+        delete order[i].orderId;
         delete product.stock;
-        order[i].product = product;
+
+        order[i].productName = product.productName;
+        order[i].price = product.price;
       }
 
       return exits.success(order);

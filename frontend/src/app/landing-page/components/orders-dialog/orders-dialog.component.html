@@ -3,9 +3,24 @@
 
     @if (orders && orders.length > 0) {
         <h2>Tus Pedidos</h2>
+
+        @for (order of orders; track $index) {
+            <p><strong>Orden con ID-{{ order.id }} <span [class]="order.status">{{
+                order.status === 'PENDING' ? 'Pendiente' :
+                order.status === 'SENT' ? 'En camino' : 'Entregada'
+            }}</span></strong></p>            
+
+            <div class="items-container">
+                @for (product of order.products; track $index) {
+                    <p class="child ellipsis-text"><strong>{{ product.productName }}</strong></p>
+                    <p class="child">Cantidad: {{ product.quantity }}</p>
+                    <p class="child">Total: ${{ product.price }}</p>
+                }
+            </div>
+        }
     } @else {
         <h2>No hay pedidos por mostrar</h2>
         <br>
-        <p>Compra algunos productos y luego regresa aquí para ver el progreso de tus pedidos.</p>
+        <p>Ve al carrito de compras, confirma tu pedido y luego regresa aquí para ver el progreso.</p>
     }
 </div>

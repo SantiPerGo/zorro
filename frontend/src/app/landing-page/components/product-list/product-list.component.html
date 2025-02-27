@@ -11,7 +11,7 @@
                 <h3>{{ product.productName }}</h3>
                 <p><b>Precio:</b> ${{ product.price }}</p>
                 <p><b>Disponibles:</b> {{ product.stock }}</p>
-                <button mat-stroked-button>Comprar</button>
+                <button mat-stroked-button (click)="addToShoppingCart(product)">Comprar</button>
             </div>
         }
     </div>

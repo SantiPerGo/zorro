@@ -1,22 +1,8 @@
 .container {
-    max-height: 50vh;
-    overflow-y: auto;
     padding: 5rem;
 }
 
-.PENDING {
-    color: cornflowerblue;
-}
-
-.SENT {
-    color: darkgoldenrod;
-}
-
-.DELIVERED {
-    color: darkseagreen;
-}
-
-:host ::ng-deep .mat-icon {
+:host ::ng-deep .mat-icon.close {
     position: absolute;
     top: 2rem;
     right: 2rem;
@@ -30,13 +16,17 @@
 }
 
 .items-container {   
+    max-height: 25vh;
+    overflow-y: auto; /* Allow vertical scroll */
+    overflow-x: hidden; /* Prevent horizontal scroll */
+
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     justify-items: center;
     align-content: start;
     gap: 0;
 
-    margin: 0;
+    margin: 3rem 0;
     border: 1px dashed var(--mat-sys-primary); /* Outer border */
     border-radius: 15px; /* Rounded corners */
 }
@@ -63,21 +53,21 @@
     display: block; /* Asegura que <p> no sea inline */
 }
 
-.container::-webkit-scrollbar {
+.items-container::-webkit-scrollbar {
     width: 1rem; /* Width of the scrollbar */
 }
 
-.container::-webkit-scrollbar-track {
+.items-container::-webkit-scrollbar-track {
     background: var(--mat-sys-surface-container-highest); /* Track color */
     border-radius: 10px;
 }
 
-.container::-webkit-scrollbar-thumb {
+.items-container::-webkit-scrollbar-thumb {
     background: var(--mat-sys-primary); /* Scrollbar handle color */
     border-radius: 10px;
 }
 
-.container::-webkit-scrollbar-thumb:hover {
+.items-container::-webkit-scrollbar-thumb:hover {
     background: var(--mat-sys-outline); /* Darker on hover */
 }
 

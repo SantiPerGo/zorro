@@ -6,6 +6,7 @@ import { User } from '../models/user';
 import { Auth } from '../models/auth';
 import { Order } from '../models/order';
 import { AuthService } from './auth.service';
+import { ShoppingCartService } from './shopping-cart.service';
 
 @Injectable({
   providedIn: 'root'
@@ -18,7 +19,8 @@ export class ApiService {
   private _uriOrdersList = this._uriOrders + '/list';
 
   constructor(
-    private _http: HttpClient
+    private _http: HttpClient,
+    private shoppingCartService: ShoppingCartService
   ) { }
 
   public getAllProducts(): Observable<Product[]> {
@@ -35,5 +37,12 @@ export class ApiService {
 
   public getOrderProductsById(id: number): Observable<Product[]> {
     return this._http.get<Product[]>(this._uriOrders + `/${id}`);
+  }
+
+  public createOrder(): Observable<void> {
+    return this._http.post<void>(this._uriOrders, {
+      userId: AuthService.getUserId(),
+      products: this.shoppingCartService.products()
+    });
   }
 }

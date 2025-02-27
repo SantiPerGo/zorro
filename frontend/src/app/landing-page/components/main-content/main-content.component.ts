@@ -1,7 +1,8 @@
-import { Component } from '@angular/core';
+import { Component, effect, Injector, signal, Signal, WritableSignal } from '@angular/core';
 import { ProductListComponent } from '../product-list/product-list.component';
 import { Product } from '../../../models/product';
 import { ApiService } from '../../../services/api.service';
+import { ShoppingCartService } from '../../../services/shopping-cart.service';
 
 @Component({
   selector: 'main-content',
@@ -10,17 +11,24 @@ import { ApiService } from '../../../services/api.service';
   styleUrl: './main-content.component.css'
 })
 export class MainContentComponent {
-  protected products: Product[] = [];
+  protected products: WritableSignal<Product[]> = signal([]);
 
   constructor(
-    private _apiService: ApiService
+    private _apiService: ApiService,
+    private shoppingCartService: ShoppingCartService,
+    private _injector: Injector
   ){}
 
-  ngOnInit() {
-    this._apiService.getAllProducts()
-      .subscribe({
-        next: products => this.products = products,
-        error: response => console.error(response)
-      });
+  ngOnInit() {   
+    effect(() => {
+      const products = this.shoppingCartService.products();
+      const isCartEmpty = !products || products.length === 0;
+
+      if(isCartEmpty)
+        this._apiService.getAllProducts().subscribe({
+            next: products => this.products.set([...products]),
+            error: response => console.error(response)
+          });
+    }, {injector: this._injector});
   }
 }

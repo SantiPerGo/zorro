@@ -2,31 +2,32 @@ USE ZorroDB;
 GO
 
 -- Insert Default Statuses
-INSERT INTO order_status (status_name) VALUES ('pending'), ('sent'), ('delivered');
+INSERT INTO order_status (status_name) VALUES ('PENDING'), ('SENT'), ('DELIVERED');
 GO
 
+-- Password used before hashing: MySecurePassword123
 -- Insert Example Data into users
 INSERT INTO users (username, email, password) VALUES 
-('John Doe', 'john@example.com', 'hashedpassword1'), 
-('Jane Smith', 'jane@example.com', 'hashedpassword2'),
-('Alice Johnson', 'alice@example.com', 'hashedpassword3'),
-('Michael Brown', 'michael@example.com', 'hashedpassword4'),
-('Emma Davis', 'emma@example.com', 'hashedpassword5'),
-('Liam Wilson', 'liam@example.com', 'hashedpassword6');
+('John Doe', 'john@example.com', '$2a$10$5IwKMIhaZmUaogQqylrJOe/BETYNiJDXd7A9EuFk6fdkt51rwWzz2'), 
+('Jane Smith', 'jane@example.com', '$2a$10$5IwKMIhaZmUaogQqylrJOe/BETYNiJDXd7A9EuFk6fdkt51rwWzz2'),
+('Alice Johnson', 'alice@example.com', '$2a$10$5IwKMIhaZmUaogQqylrJOe/BETYNiJDXd7A9EuFk6fdkt51rwWzz2'),
+('Michael Brown', 'michael@example.com', '$2a$10$5IwKMIhaZmUaogQqylrJOe/BETYNiJDXd7A9EuFk6fdkt51rwWzz2'),
+('Emma Davis', 'emma@example.com', '$2a$10$5IwKMIhaZmUaogQqylrJOe/BETYNiJDXd7A9EuFk6fdkt51rwWzz2'),
+('Liam Wilson', 'liam@example.com', '$2a$10$5IwKMIhaZmUaogQqylrJOe/BETYNiJDXd7A9EuFk6fdkt51rwWzz2');
 GO
 
 -- Insert Example Data into products
 INSERT INTO products (product_name, price, stock) VALUES 
-('Apple', 0.50, 100), 
-('Banana', 0.30, 150),
-('Carrot', 0.40, 80),
-('Milk', 1.20, 50),
-('Chips', 1.50, 200),
-('Soda', 1.00, 100),
-('Bread', 2.00, 60),
-('Eggs', 2.50, 30),
-('Cheese', 3.00, 40),
-('Chicken', 5.00, 20);
+('Bolsa de Manzanas', 0.50, 100), 
+('Plátano Seco', 0.30, 150),
+('Zanahorias de Granja', 0.40, 80),
+('Leche', 1.20, 50),
+('Papas Fritas Lays', 1.50, 200),
+('Coca Cola en Lata', 1.00, 100),
+('Bolsa de Pan', 2.00, 60),
+('Cartón de Huevo', 2.50, 30),
+('Queso Rallado', 3.00, 40),
+('Tiras de Polllo Tyson', 5.00, 20);
 GO
 
 -- Insert Example Data into orders

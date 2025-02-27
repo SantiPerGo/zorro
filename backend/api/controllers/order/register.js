@@ -75,11 +75,21 @@ module.exports = {
             return exits.badRequest({ error: `Invalid quantity for product ${item.productId}` });
           }
 
+          if (product.stock < item.quantity) {
+            return exits.badRequest({ error: `Insufficient stock for product ${item.productId}` });
+          }
+
+          // Insert into order_details
           await OrderDetails.create({
             orderId: newOrder.id,
             productId: item.productId,
             quantity: item.quantity
           }).usingConnection(db);
+
+          // Update product stock
+          await Product.updateOne({ id: item.productId })
+            .set({ stock: product.stock - item.quantity })
+            .usingConnection(db);
         }
 
         return exits.success({

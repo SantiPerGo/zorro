@@ -3,6 +3,7 @@ import { RouterLink, RouterLinkActive } from '@angular/router';
 import { AuthService } from '../../../services/auth.service';
 import { MatDialog } from '@angular/material/dialog';
 import { OrdersDialogComponent } from '../orders-dialog/orders-dialog.component';
+import { ShoppingCartDialogComponent } from '../shopping-cart-dialog/shopping-cart-dialog.component';
 
 @Component({
   selector: 'navbar',
@@ -19,7 +20,15 @@ export class NavbarComponent {
     this.authService.closeSession();
   }
 
-  protected openDialog() {
-    this.dialog.open(OrdersDialogComponent);
+  protected openShopDialog() {
+    this.dialog.open(ShoppingCartDialogComponent, {
+      minWidth: '70vw'
+    });
+  }
+
+  protected openOrderDialog() {
+    this.dialog.open(OrdersDialogComponent, {
+      minWidth: '70vw'
+    });
   }
 }

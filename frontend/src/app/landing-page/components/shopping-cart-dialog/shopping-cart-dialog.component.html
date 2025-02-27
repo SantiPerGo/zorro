@@ -1,0 +1,21 @@
+<div class="container">
+    <mat-icon class="close" fontIcon="close" (click)="dialogRef.close()"></mat-icon>
+
+    @if (products && products.length > 0) {
+        <h2>Tu Carrito de Compras</h2>
+
+        <div class="items-container">
+            @for (product of products; track $index) {
+                <h3 class="child ellipsis-text">{{ product.productName }}</h3>
+                <p class="child">Cantidad: {{ product.quantity }}</p>
+                <p class="child">Total: ${{ product.price }}</p>
+            }
+        </div>
+    
+        <button mat-flat-button (click)="sendCart()">Realizar pedido</button>
+    } @else {
+        <h2>No hay productos por mostrar</h2>
+        <br>
+        <p>Selecciona algunos productos y luego regresa aquí para confirmar el pedido.</p>
+    }
+</div>
