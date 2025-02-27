@@ -4,6 +4,10 @@
 
 Este es un proyecto de ecommerce que forma parte de la prueba técnica para Grupo Zorro Abarrotero. La aplicación permite a los usuarios registrarse, iniciar sesión, visualizar productos y gestionar sus pedidos.
 
+<p><a target="_blank" href="https://youtu.be/ENUAd8J2krM">
+    Abre este enlace para ver el video demostración
+</a></p>
+
 ## Tecnologías Utilizadas
 
 - **Frontend**: Angular 19, Angular Material (como Biblioteca de estilos y componentes)
